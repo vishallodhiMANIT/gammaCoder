@@ -101,3 +101,4 @@ export const getCurrentUserData = async () => {
         return { success: false, error: "Failed to fetch user" };
     }
 };
+export const getCurrentUser = getCurrentUserData;
