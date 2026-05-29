@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getCurrentUserData } from "@/modules/auth/actions";
 import PlaylistsSection from "@/modules/profile/components/playlist-section";
 import ProfileStats from "@/modules/profile/components/profile-stats";
@@ -15,17 +16,17 @@ const ProfilePage = async () => {
       <div className="container mx-auto px-4 max-w-7xl">
         <UserInfoCard userData={profileData} />
 
-        <ProfileStats
-          submissions={profileData.submissions}
-          solvedCount={profileData.solvedProblems.length}
-          playlistCount={profileData.playlists.length}
-        />
+       <ProfileStats
+  submissions={profileData?.submissions ?? []}
+  solvedCount={profileData?.solvedProblems?.length ?? 0}
+  playlistCount={profileData?.playlists?.length ?? 0}
+/>
 
-        <SubmissionsHistory submissions={profileData.submissions} />
+       <SubmissionsHistory submissions={profileData?.submissions ?? []} />
 
         <div className="grid  gap-8">
-          <SolvedProblems solvedProblems={profileData.solvedProblems} />
-          <PlaylistsSection playlists={profileData.playlists} />
+        <SolvedProblems solvedProblems={profileData?.solvedProblems ?? []} />
+         <PlaylistsSection playlists={profileData?.playlists ?? []} />
         </div>
       </div>
     </div>
@@ -33,3 +34,4 @@ const ProfilePage = async () => {
 };
 
 export default ProfilePage;
+
